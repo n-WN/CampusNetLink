@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO, format=f'\033[1;36m[*]\033[0m %(asctime)
 # 只需修改以下 3 处参数:
 cookies = {
     'username': '',  # 学号 ---------- 1
-    'password': '',  # 密码 ---------- 2
+    'password': '',  # 密码 抓取网络包后获取的类似hash的值---------- 2
 }
 
 host = ''  # 登录页面地址    ---------- 3
@@ -47,8 +47,10 @@ def get_info():
         response = requests.post(f'{host}/Auth.ashx', headers=headers, json=json_data)
         package_info = response.json().get('Data', {}).get('KXTC', [])
         global ip
-        ip = response.json().get('Data', {}).get('OIA', [])[0].get('IP', '') # 常规获取第零项 ip
-        logging.info
+        try:
+            ip = response.json().get('Data', {}).get('OIA', [])[0].get('IP', '') # 常规获取第零项 ip
+        except Exception as e:  # 指定异常类型
+            logging.error('获取 IP 时发生错误, 正在登陆: %s', e)
         for item in package_info:
             # 偏好 电信 / 移动
             if '电信' in item.get('套餐名称', ''):
@@ -86,9 +88,9 @@ if __name__ == '__main__':
     print(login())
     # 随机等待 1-3 秒, 避免可能的风控
     time.sleep(1 + 2 * random.random())
-    print(go_online())
-    time.sleep(1 + 2 * random.random())
     get_info()
+    time.sleep(1 + 2 * random.random())
+    print(go_online())
     time.sleep(1 + 2 * random.random())
     # print(go_offline())
     
