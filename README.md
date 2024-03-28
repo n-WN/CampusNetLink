@@ -2,7 +2,7 @@
 
 ### 某校校园网快捷登录
 
-1. 下载仓库中的 (campusNetLink.py)[https://github.com/n-WN/CampusNetLink/blob/main/campusNetLink.py]
+1. 下载仓库中的 [campusNetLink.py](https://github.com/n-WN/CampusNetLink/blob/main/campusNetLink.py)
 
 2. 填入代码注释所提到的三个参数
 
