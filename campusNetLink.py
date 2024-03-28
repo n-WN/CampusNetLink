@@ -57,6 +57,10 @@ def get_info():
                 global package
                 package = item['套餐名称']
                 break
+            else '移动'  in item.get('套餐名称', ''):
+                global package
+                package = item['套餐名称']
+                break
         logging.info('当前默认套餐: %s', package)
         return response.text
     except requests.RequestException as e:
