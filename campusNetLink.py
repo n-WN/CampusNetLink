@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO, format=f'\033[1;36m[*]\033[0m %(asctime)
 # 只需修改以下 3 处参数:
 cookies = {
     'username': '',  # 学号 ---------- 1
-    'password': '',  # 密码 抓取网络包后获取的类似hash的值, 后续大概会写自动获取登录的脚本, 暂未审计校园网登录页 js ---------- 2
+    'password': '',  # 密码 抓取网络包后获取的类似 hash 的值, 后续大概会自动化 hash, 暂未审计校园网登录页 js ---------- 2
 }
 
 host = ''  # 登录页面地址    ---------- 3
