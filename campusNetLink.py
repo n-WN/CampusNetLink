@@ -33,8 +33,7 @@ def load_headers(task):
         'Content-Type': 'application/json',
     }
     if task in ['登录', '上线']:
-        headers.update(
-            {'Cache-Control': 'no-cache', 'Connection': 'keep-alive', 'DNT': '1', 'Origin': host, 'Pragma': 'no-cache'})
+        headers.update({'Cache-Control': 'no-cache', 'Connection': 'keep-alive', 'DNT': '1', 'Origin': host, 'Pragma': 'no-cache'})
     elif task not in ['下线', '查询']:
         logging.error('未知任务: %s', task)
 
@@ -149,9 +148,9 @@ def go_offline():
 
 if __name__ == '__main__':
     login_aspx()
-    # 随机等待 1-3 秒, 避免可能的风控
+    # 随机等待 1-2 秒, 避免可能的风控
     time.sleep(1 + random.random())
-    get_info()
+    print(get_info()) # DEBUG
     time.sleep(1 + random.random())
     for i in range(2): # 换掉 where True 避免某些原因没有上线导致程序陷入循环
         result = go_online()
@@ -163,4 +162,4 @@ if __name__ == '__main__':
             time.sleep(1 + random.random())
             print(f'似乎满员了 | 下线: {go_offline()}')
             go_offline()
-    # print(result)
+    print(result)
