@@ -156,7 +156,7 @@ if __name__ == '__main__':
         online_msg = json.loads(go_online())
         if online_msg["Result"]:
             print(online_msg["Message"])
-            exit()
+            break
         else:
             time.sleep(1 + 2 * random.random())
             go_offline() # 踢别的设备下线 | ip 获取时确认获取为其余设备 ip
