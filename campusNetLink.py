@@ -150,9 +150,9 @@ if __name__ == '__main__':
     login_aspx()
     # 随机等待 1-2 秒, 避免可能的风控
     time.sleep(1 + random.random())
-    print(get_info()) # DEBUG
+    print(get_info())  # DEBUG
     time.sleep(1 + random.random())
-    for i in range(2): # 换掉 where True 避免某些原因没有上线导致程序陷入循环
+    for i in range(2):  # 换掉 where True 避免某些原因没有上线导致程序陷入循环
         result = go_online()
         online_msg = json.loads(result)
         if online_msg["Result"]:
@@ -160,6 +160,6 @@ if __name__ == '__main__':
             break
         else:
             time.sleep(1 + random.random())
-            print(f'似乎满员了 | 下线: {go_offline()}')
+            print(f'似乎满员了 | 准备下线某个设备后再次上线当前设备: {go_offline()}')
             go_offline()
     print(result)
