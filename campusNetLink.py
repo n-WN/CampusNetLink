@@ -85,21 +85,21 @@ def get_info():
     json_data = {'DoWhat': 'GetInfo'}
     try:
         response = requests.post(f'{host}/Auth.ashx', headers=headers, json=json_data)
-        package_info = response.json().get('Data', {}).get('KXTC', [])
         global ip
         try:
             ip = response.json().get('Data', {}).get('OIA', [])[0].get('IP', '') # 常规获取第零项 ip
         except Exception as e:  # 指定异常类型
             logging.error('获取 IP 时发生错误, 正在登陆: %s', e)
+
+        package_info = response.json().get('Data', {}).get('KXTC', [])
         global package
         for item in package_info:
-            # 偏好 电信 / 移动
             if '电信' in item.get('套餐名称', ''):
                 package = item['套餐名称']
                 break
             elif '移动' in item.get('套餐名称', ''):
                 package = item['套餐名称']
-                break
+                # break
         logging.info('当前默认套餐: %s', package)
         return response.text
     except requests.RequestException as e:
@@ -128,12 +128,11 @@ def go_offline():
         return str(e)
 
 if __name__ == '__main__':
-    print(login_aspx())
+    login_aspx()
     # 随机等待 1-3 秒, 避免可能的风控
     time.sleep(1 + 2 * random.random())
     get_info()
     time.sleep(1 + 2 * random.random())
     print(go_online())
-    time.sleep(1 + 2 * random.random())
+    # time.sleep(1 + 2 * random.random())
     # print(go_offline())
-    
