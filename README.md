@@ -6,7 +6,7 @@
 
 1. 下载仓库中的 [campusNetLink.py](https://github.com/n-WN/CampusNetLink/blob/main/campusNetLink.py)
 
-2. 填入代码注释所提到的三个参数
+2. 填入代码注释所提到的 2 个参数(账户名和密码)
 
 3. 运行这份代码
 
