@@ -45,8 +45,7 @@ def generate_asp_session_id():
 def login_aspx():
     headers = {
         'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,'
-                  'application/signed-exchange;v=b3;q=0.7',
-        # 预期响应内容类型
+                  'application/signed-exchange;v=b3;q=0.7',  # 预期响应内容类型
         'accept-language': 'zh-CN,zh;q=0.9',  # 语言偏好 | zh-CN 中文简体 优先 | 其次 zh 中文
         'cache-control': 'no-cache',  # 缓存机制 | 表示请求不应从缓存中获取信息
         'content-type': 'application/x-www-form-urlencoded',
