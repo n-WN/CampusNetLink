@@ -2,7 +2,7 @@
 
 ### 某校校园网快捷登录
 
-### 使用教程:
+### 使用教程(需要 Python):
 
 1. 下载仓库中的 [campusNetLink.py](https://github.com/n-WN/CampusNetLink/blob/main/campusNetLink.py)
 
