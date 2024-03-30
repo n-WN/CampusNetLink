@@ -5,9 +5,10 @@ import time
 import random
 import string
 
-logging.basicConfig(level=logging.INFO,
-                    format=f'\033[1;36m[*]\033[0m %(asctime)s - \033[1;32m%(levelname)s\033[0m - \033[1;32m%('
-                           f'message)s\033[0m')
+logging.basicConfig(
+    level=logging.INFO,
+    format=f'\033[1;36m[*]\033[0m %(asctime)s - \033[1;32m%(levelname)s\033[0m - \033[1;32m%(message)s\033[0m'
+)
 
 cookies = {
     # 只需填入以下 2 处参数:
@@ -112,7 +113,7 @@ def get_info():
         for item in package_info:
             if '电信' in item.get('套餐名称', ''):
                 package = item['套餐名称']
-                break
+                break  # 首选电信
             elif '移动' in item.get('套餐名称', ''):
                 package = item['套餐名称']
                 # break
@@ -149,14 +150,17 @@ def go_offline():
 if __name__ == '__main__':
     login_aspx()
     # 随机等待 1-3 秒, 避免可能的风控
-    time.sleep(1 + 2 * random.random())
+    time.sleep(1 + random.random())
     get_info()
-    time.sleep(1 + 2 * random.random())
+    time.sleep(1 + random.random())
     for i in range(2): # 换掉 where True 避免某些原因没有上线导致程序陷入循环
-        online_msg = json.loads(go_online())
+        result = go_online()
+        online_msg = json.loads(result)
         if online_msg["Result"]:
             print(online_msg["Message"])
             break
         else:
-            time.sleep(1 + 2 * random.random())
-            go_offline() # 踢别的设备下线 | ip 获取时确认获取为其余设备 ip
+            time.sleep(1 + random.random())
+            print(f'似乎满员了 | 下线: {go_offline()}')
+            go_offline()
+    # print(result)
