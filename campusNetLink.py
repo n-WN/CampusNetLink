@@ -6,8 +6,8 @@ import string
 
 logging.basicConfig(level=logging.INFO, format=f'\033[1;36m[*]\033[0m %(asctime)s - \033[1;32m%(levelname)s\033[0m - \033[1;32m%(message)s\033[0m')
 
-# 只需填入以下 2 处参数:
 cookies = {
+    # 只需填入以下 2 处参数:
     'username': '',  # 学号 ---------- 1
     'password': '',  # 密码 ---------- 2
 }
