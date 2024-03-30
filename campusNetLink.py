@@ -148,6 +148,8 @@ if __name__ == '__main__':
     time.sleep(1 + 2 * random.random())
     get_info()
     time.sleep(1 + 2 * random.random())
+    print(go_online())
+    """
     while True:
         online_msg = json.loads(go_online())
         if online_msg["Result"]:
@@ -155,3 +157,4 @@ if __name__ == '__main__':
             break
         else:
             go_offline()
+    """
