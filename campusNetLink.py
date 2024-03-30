@@ -152,7 +152,6 @@ if __name__ == '__main__':
     time.sleep(1 + 2 * random.random())
     get_info()
     time.sleep(1 + 2 * random.random())
-    """
     for i in range(2): # 换掉 where True 避免某些原因没有上线导致程序陷入循环
         online_msg = json.loads(go_online())
         if online_msg["Result"]:
@@ -160,5 +159,4 @@ if __name__ == '__main__':
             exit()
         else:
             time.sleep(1 + 2 * random.random())
-            go_offline() # 踢别的设备下线
-    """
+            go_offline() # 踢别的设备下线 | ip 获取时确认获取为其余设备 ip
