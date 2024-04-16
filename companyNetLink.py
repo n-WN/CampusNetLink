@@ -5,6 +5,7 @@ from Crypto.Cipher import ARC4 # pip install pycryptodome
 
 phone_number = ''
 password = b''
+ip = ''
 
 def encrypt_rc4_python(data, key):
     cipher = ARC4.new(key)
@@ -18,9 +19,9 @@ def header():
         'Connection': 'keep-alive',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'DNT': '1',
-        'Origin': 'http://10.206.20.250',
+        'Origin': 'http://' + ip,
         'Pragma': 'no-cache',
-        'Referer': 'http://10.206.20.250/ac_portal/default/pc.html?tabs=pwd',
+        'Referer': 'http://' + ip + '/ac_portal/default/pc.html?tabs=pwd',
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:50.0) Gecko/20100101 Firefox/50.0',
         'X-Requested-With': 'XMLHttpRequest',
     }
@@ -41,13 +42,13 @@ def login():
         'rememberPwd': '0',
     }
 
-    response = requests.post('http://10.206.20.250/ac_portal/login.php', headers=headers, data=data, verify=False)
+    response = requests.post('http://' + ip + /ac_portal/login.php', headers=headers, data=data, verify=False)
     response.encoding = 'utf-8'
     print(response.text)
 
 def logout():
     headers = header()
-    headers['Referer'] = 'http://10.206.20.250/ac_portal/default/pc.html?type=logout&tabs=pwd'
+    headers['Referer'] = 'http://' + ip + '/ac_portal/default/pc.html?type=logout&tabs=pwd'
     print(headers)
 
     cookies = {
@@ -58,7 +59,7 @@ def logout():
         'opr': 'logout',
     }
 
-    response = requests.post('http://10.206.20.250/ac_portal/login.php', cookies=cookies, headers=headers, data=data, verify=False)
+    response = requests.post('http://' + ip + '/ac_portal/login.php', cookies=cookies, headers=headers, data=data, verify=False)
     response.encoding = 'utf-8'
     print(response.text)
 
